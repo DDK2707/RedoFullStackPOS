@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const products = require("../models/productModel");
 const auth = require("../config/auth");
-const {getProduct} = require("../config/getShema");
+const {getProduct} = require("../config/getSchema");
 const app = express.Router();
 
 //get all products

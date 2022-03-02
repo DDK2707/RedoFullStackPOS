@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const {
     getUser, 
     getProduct
-} = require ("../config/getShema");
+} = require ("../config/getSchema");
 const app = express.Router();
 
 //get all users
