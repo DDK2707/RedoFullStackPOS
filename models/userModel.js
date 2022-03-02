@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    userid: {
+    user_id: {
         type: String
     },
-    name: {
+    username: {
         type: String,
         required: true
     }, 
@@ -17,10 +17,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },
-    contact: {
-        type: String, 
-        required: true
     },
     cart: {
         type: Array,

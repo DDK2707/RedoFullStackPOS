@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const productSchema = new.mongoose.Schema({
-    productid: {
+    product_id: {
         type: String
     },
     producttitle: {
