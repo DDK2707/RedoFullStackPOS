@@ -9,7 +9,7 @@ const {
     getUser, 
     getProduct
 } = require ("../config/getShema");
-const { application } = require("express");
+const app = express.Router();
 
 //get all users
 app.get("/", async (req, res) => {
@@ -59,7 +59,8 @@ app.post("/", async (req, res, next) => {
     const{
         username,
         email,
-        password
+        password, 
+        contact
     } = req.body;
 
     const salt = await bcrypt.genSalt();
@@ -68,7 +69,8 @@ app.post("/", async (req, res, next) => {
     const user = new Users({
         username,
         email, 
-        password: hashedPassword
+        password: hashedPassword,
+        contact
     });
 
     try{
@@ -93,7 +95,8 @@ app.put("/:id", getUser, async (req, res, next) => {
     const {
         username,
         email,
-        password
+        password,
+        contact
     } = req.body;
     if (username) res.user.username = username;
     if (email) res.user.email = email;
@@ -101,7 +104,8 @@ app.put("/:id", getUser, async (req, res, next) => {
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
         res.user.password = hashedPassword;
-    }
+    };
+    if (contact) res.user.contact = contact;
 
     try {
         const updatedUser = await res.user.save();
