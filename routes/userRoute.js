@@ -138,35 +138,13 @@ app.get('/:id/cart', auth, async (req, res, next) => {
 //add product to cart
 app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
     const user = await Users.findById(req.user._id)
-    console.log(user)
-    let product_id = res.product.id
-    let producttitle = res.product.title
-    let category = res.product.category
-    let price = res.product.price
-    let image = res.product.image
-    let qty = req.body.qty
-    let createdby = req.user.id
-    
-    console.log({
-        product_id,
-        producttitle,
-        category,
-        image,
-        price, 
-        qty,
-        createdby
-    })
+    let product = res.product
     try{
-        console.log(Array.isArray(req.user.cart))
+        console.log(Array.isArray(user.cart))
         user.cart.push({
-            product_id,
-            producttitle,
-            category,
-            image,
-            price,
-            qty,
-            createdby
+            ...product
         })
+        user.markModified('cart')
         const updatedUser = await user.save();
         res.status(201).json(updatedUser)
     } catch (error) {
