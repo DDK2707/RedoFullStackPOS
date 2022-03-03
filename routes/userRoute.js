@@ -139,13 +139,13 @@ app.get('/:id/cart', auth, async (req, res, next) => {
 app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
     const user = await Users.findById(req.user._id)
     console.log(user)
-    let product_id = res.product._id
+    let product_id = res.product.id
     let producttitle = res.product.title
     let category = res.product.category
     let price = res.product.price
     let image = res.product.image
     let qty = req.body.qty
-    let createdby = req.user._id
+    let createdby = req.user.id
     
     console.log({
         product_id,

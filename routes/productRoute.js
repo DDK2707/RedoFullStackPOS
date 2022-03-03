@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const products = require("../models/productModel");
+const Product = require("../models/productModel");
 const auth = require("../config/auth");
 const {getProduct} = require("../config/getSchema");
 const app = express.Router();
@@ -8,10 +8,10 @@ const app = express.Router();
 //get all products
 app.get("/", auth, async (req, res) => {
     try {
-        const product = await product.find();
-        res.status(201).send(product);
+        const products = await Product.find();
+        res.status(201).send(products);
     } catch (error) {
-        return res.status(500).send({ message: error.message });
+        res.status(500).send({ message: error.message });
     }
 });
 
