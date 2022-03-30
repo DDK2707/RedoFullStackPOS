@@ -6,7 +6,7 @@ const cors = require("cors");
 const userRoute = require("./routes/userRoute");
 const contactRoute = require("./routes/contactRoute");
 const productRoute = require ("./routes/productRoute");
-const contactRoute = require ("./routes/contactRoute")
+
 
 //set up MongoDB connection
 mongoose.connect(process.env.DATABASE_URL, {
